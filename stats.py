@@ -1,6 +1,6 @@
 #convierte el file de frankenstein en string
-def get_book_text():
-    with open("books/frankenstein.txt") as f:
+def get_book_text(bookDir):
+    with open(f"{bookDir}") as f:
         file_string = f.read()
 
     return file_string
@@ -16,14 +16,14 @@ def count_words(bookstring):
     return count
 
 #toma el string de libro y crea el set de caracteres unicos
-def create_char_set():
+def create_char_set(bookDir):
     lowcase_text = []
     lowcase_chars = []
     char_set = set()
     count_dict = {}
 
     #convierte el texto a lowercase
-    lowcase_text = get_book_text().lower()
+    lowcase_text = get_book_text(bookDir).lower()
     #crea lista de todos los caracteres
     for char in lowcase_text:
         lowcase_chars.append(char)

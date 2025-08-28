@@ -3,12 +3,18 @@ from stats import count_words
 from stats import get_book_text
 from stats import create_char_set
 from stats import sorted_dicts_list
+
 character_dict = {}
 
 def main():
-    total_words = count_words(get_book_text())
-    character_dict = create_char_set()
-    print_final_report(total_words,sorted_dicts_list(character_dict))
+    if len(sys.argv) > 1:
+        book_dir = sys.argv[1]
+        total_words = count_words(get_book_text(book_dir))
+        character_dict = create_char_set(book_dir)
+        print_final_report(total_words,sorted_dicts_list(character_dict))
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
 def print_final_report(wordcount, ordenada):
     print("============ BOOKBOT ============")
