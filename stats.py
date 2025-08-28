@@ -39,7 +39,7 @@ def create_char_set():
 def counting_chars(charset, lowstring):
     char_count_dict = {}
     count = 0
-    print("cuenta de caracteres:")
+    #print("cuenta de caracteres:")
     for char in charset:
         char_count = lowstring.count(char)
         char_count_dict[char] = char_count
@@ -47,3 +47,18 @@ def counting_chars(charset, lowstring):
     #print(char_count_dict)
     
     return char_count_dict
+
+#funcion auxiliar para sort que no entiendo porque funciona
+def sort_on(items):
+    return items["num"]
+
+#toma el diccionario de caracteres y regresa una lista
+#acomodada de diccionarios 
+def sorted_dicts_list(charCountDict):
+    sortedList = []
+    tempDict = {}
+    for char in charCountDict:
+        tempDict = {'char': char, 'num' : charCountDict[char]}
+        sortedList.append(tempDict)
+    sortedList.sort(reverse=True, key=sort_on)
+    return sortedList
